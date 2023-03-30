@@ -1,0 +1,34 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Resources" : {
+        "newvpc" : {
+            "Type" : "AWS::EC2::VPC",
+            "Properties" : {
+                "CidrBlock" : "192.168.0.0/16",
+                "Tags" : [
+                    {
+                        "Key" : "Name",
+                        "Value" : "dev_vpc"
+                    }
+                ]
+            }
+        },
+        "subnet1" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "AvailabilityZone" : "us-east-1a",
+                "CidrBlock" : "192.168.0.0/24",
+                "VpcId" : {
+                    "Ref" : "newvpc"
+                },
+                "Tags" : [
+                    {
+                        "Key": "Name",
+                        "Value": "dev_subnet1"
+                    }
+                ]
+            }
+        }
+
+    }
+}
